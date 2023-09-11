@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.box {
+    /* border-style: solid;
+    border-color: black;
+    border-width: 1px; */
+    width: 2vw;
+    height: 2vw;
+}
+
+.container {
+    border-style: solid;
+    border-color: grey;
+    display: flex;
+    flex-wrap: wrap;
+    width: 32vw;
+    height: 32vw;
+}
+
+.active {
+    background-color: black;
+}
