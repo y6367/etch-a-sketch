@@ -2,6 +2,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 
@@ -9,8 +10,8 @@ body {
     /* border-style: solid;
     border-color: black;
     border-width: 1px; */
-    width: 2vw;
-    height: 2vw;
+    /* width: 2vw;
+    height: 2vw; */
 }
 
 .container {
