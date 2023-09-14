@@ -9,6 +9,7 @@ let rgb1;
 let rgb2;
 let rgb3;
 let rbg;
+let rainbowStatus = 'off';
 
 
 function randomRgb() {
@@ -64,21 +65,35 @@ reset.addEventListener("click", () => {
 
 rgbBtn.addEventListener("click", () => {
     box = document.querySelectorAll('.box')
-    box.forEach(box => {
-        box.addEventListener("mouseover", () => {
-            randomRgb();
-            box.style.backgroundColor = rgb;
-            console.log('lol')
-        })
-    });
+    if (rainbowStatus === 'on') {
+        rainbowStatus = 'off';
+        box.forEach(box => {
+            box.addEventListener("mouseover", () => {
+                box.style.backgroundColor = "black";
+                console.log('lol')
+            })
+        });
+    } else if (rainbowStatus === 'off') {
+        rainbowStatus = 'on';
+        box.forEach(box => {
+            box.addEventListener("mouseover", () => {
+                randomRgb();
+                box.style.backgroundColor = rgb;
+                console.log('lol')
+            })
+        });
+    }
+    console.log(rainbowStatus) 
 })
 
-blackBtn.addEventListener("click", () => {
-    box = document.querySelectorAll('.box')
-    box.forEach(box => {
-        box.addEventListener("mouseover", () => {
-            box.style.backgroundColor = "black";
-            console.log('lol')
-        })
-    });
-})
+//old black button, doesnt need because rainbow toggles.
+
+// blackBtn.addEventListener("click", () => {
+//     box = document.querySelectorAll('.box')
+//     box.forEach(box => {
+//         box.addEventListener("mouseover", () => {
+//             box.style.backgroundColor = "black";
+//             console.log('lol')
+//         })
+//     });
+// }) 
