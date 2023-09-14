@@ -86,7 +86,7 @@ rgbBtn.addEventListener("click", () => {
     console.log(rainbowStatus) 
 })
 
-//old black button, doesnt need because rainbow toggles.
+//old black button, dont need because rainbow toggles with black.
 
 // blackBtn.addEventListener("click", () => {
 //     box = document.querySelectorAll('.box')
