@@ -1,7 +1,9 @@
 const container = document.querySelector('.container');
 const reset = document.querySelector('.reset');
 const rgbBtn = document.querySelector('.rgb');
-const blackBtn = document.querySelector('.black')
+const fadeBtn = document.querySelector('.fade')
+
+let pauseStatus = 'off';
 let boxCount = 20;
 let temp = `${32 / boxCount}vw`;
 let box;
@@ -10,6 +12,23 @@ let rgb2;
 let rgb3;
 let rbg;
 let rainbowStatus = 'off';
+let fadePer = 10;
+let fadeRgb;
+let fadeStatus = 'off';
+
+//keydown to pause.
+// document.addEventListener("keydown", (e) => {
+//     if (e.keycode === 8 || pauseStatus === 'on') {
+//         console.log('2')
+//         pauseStatus = 'off'
+//         box.forEach((div) => {
+//             div.parentNode.removeChild(div);
+//         });
+//     } else if (e.keycode === 8 || pauseStatus === 'off') {
+//         console.log('saeadx')
+//         pauseStatus = 'on'
+//     }
+// })
 
 
 function randomRgb() {
@@ -22,6 +41,9 @@ randomRgb()
 
 function updateTemp() {
     temp = `${32 / boxCount}vw`;
+}
+function updateFade() {
+    fadeRgb = `rgb(${12.75 * fadePer} ${12.75 * fadePer} ${12.75 * fadePer})`;
 }
 
 function boxInit() {
@@ -42,7 +64,7 @@ function boxCreate() {
             box.classList.add('active')
             // randomRgb();
             // box.style.backgroundColor = rgb;
-            console.log('lol')
+            // console.log('lol')
         })
     });
 }
@@ -61,6 +83,8 @@ reset.addEventListener("click", () => {
         div.parentNode.removeChild(div);
     });
     boxCreate()
+    fadeStatus = 'off';
+    rainbowStatus = 'off';
 })
 
 rgbBtn.addEventListener("click", () => {
@@ -70,7 +94,7 @@ rgbBtn.addEventListener("click", () => {
         box.forEach(box => {
             box.addEventListener("mouseover", () => {
                 box.style.backgroundColor = "black";
-                console.log('lol')
+                // console.log('lol')
             })
         });
     } else if (rainbowStatus === 'off') {
@@ -79,12 +103,45 @@ rgbBtn.addEventListener("click", () => {
             box.addEventListener("mouseover", () => {
                 randomRgb();
                 box.style.backgroundColor = rgb;
-                console.log('lol')
+                // console.log('lol')
             })
         });
     }
     console.log(rainbowStatus) 
 })
+
+fadeBtn.addEventListener("click", () => {
+    fadePer = 20
+    console.log('yes')
+
+    box = document.querySelectorAll('.box')
+    if (fadeStatus === 'on') {
+        fadeStatus = 'off';
+        box.forEach(box => {
+            box.addEventListener("mouseover", () => {
+                box.style.backgroundColor = "black";
+                // console.log('lol')
+            })
+        });
+    } else if (fadeStatus === 'off') {
+        fadeStatus = 'on';
+        box.forEach(box => {
+            box.addEventListener("mouseover", () => {
+                box.style.backgroundColor = fadeRgb;
+                fadePer--
+                updateFade();
+                if (fadePer === 0) {
+                    fadePer = 20;
+                }
+                // console.log(fadeRgb)
+                // console.log(fadePer)
+                // console.log('lol') 
+           })
+        });
+    }
+
+})
+
 
 //old black button, dont need because rainbow toggles with black.
 
@@ -97,3 +154,5 @@ rgbBtn.addEventListener("click", () => {
 //         })
 //     });
 // }) 
+
+25.5
